@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Fiel Católico - Página Inicial{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .myfont {
+            text-shadow: 1px 1px #000000;
+            /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+            /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+            /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+            /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+            /* font-family: Georgia, 'Times New Roman', Times, serif; */
+            /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+        }
+    </style>
+{% endblock %}
+
+<!-- % block js %}{% endblock % -->
+
+
+{% block content %}
+
+    <!-- Hero -->
+    <div class="p-5 text-center bg-image" style="
+    background-image: url('static/img/igreja_hero3.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:right;
+    height: 90vh; width: 100%;">
+    
+    <div style="margin-top: -35px; margin-bottom: 20px;">
+    <span style="background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.5)); padding: 3px 15px; border-radius: 15px; 
+    font-size: 0.8em; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+        <b>Tendo o Senhor tantos inimigos e tão poucos amigos, toda a minha ânsia era, e ainda é, que ao menos estes fossem bons. (Santa Tereza D'Ávila)</b>
+    </span></div>
+
+      <div class="row">
+        <div class="col-md-7"></div>
+        <div class="col-md-4 mask" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 10px;">
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white py-5" style="text-shadow: 1px 1px #000000;">
+              <h2 class="mb-3 myfont">Fiel Católico</h1>
+              <h4 class="mb-3 myfont">O seu site de estudo da fé!</h4>
+              <p class="myfont">Fiel Católico é um site para estudo da Sã Doutrina. Em breve, será possível conhecer o básico da fé e se aprofundar com conteúdos, cursos e quizzes!</p>
+              <a class="btn btn-success btn-sm" href="#!" role="button">Clique para iniciar</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+<!-- Hero -->
+
+{% endblock %}

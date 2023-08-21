@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}Meu Site{% endblock %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'css/css.css' %}">
+{% endblock %}
+
+{% block 'search_term' %} {{search}} {% endblock %}
+
+{% block 'content' %}
+    {% if count > 0 %}
+        <p style="font-size: 1.25em;">Encontrados {{ count }} resultados para: <span style="font-weight: 500;">{{search}}</span></p>
+    {% else %}
+        <p style="font-size: 1.25em;">Nenhum resultado encontrado para: <span style="font-weight: 500;">{{search}}</span></p>
+    {% endif %}
+
+    {% for i in verses %}
+    <p>{{i.text}} ({{i.book_id.abbreviation}} {{i.chapter}}, {{i.verse}})</p>
+    {% endfor %}
+
+{% endblock %}
+
+
+
