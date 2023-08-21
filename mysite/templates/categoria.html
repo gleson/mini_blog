@@ -1,0 +1,13 @@
+<h3>{{ categoria.name }}</h3>
+<ul>
+  {% for postagem in postagens %}
+    <li><a href="{{ postagem.get_absolute_url }} {{postagem.slug }}">{{ postagem.title }}</a></li>
+  {% endfor %}
+</ul>
+
+
+{% for branch in category_tree %}
+<ul>
+  {{ branch|safe }}
+</ul>
+{% endfor %}

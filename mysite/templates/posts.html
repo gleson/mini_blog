@@ -1,0 +1,12 @@
+{% extends 'base_navbar.html' %}
+{% extends 'base_body.html' %}
+
+{% block 'content' %}
+<h2>Post</h2>
+
+    {% for content_page in content %}
+    <p>{{content_page.title}} ({{content_page.active}} {{content_page.publish}})</p>
+    {% endfor %}
+
+{% endblock %}
+
