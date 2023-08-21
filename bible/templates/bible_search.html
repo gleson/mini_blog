@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Busca na Bíblia{% endblock %}
+
+
+{% block 'search_term' %} {{search}} {% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row col-5 mx-auto mt-3 mb-3">
+        <form action="{% url 'bible_search' %}" method="POST" class="form-inline my-2 my-lg-0">{% csrf_token %}
+            <input class="form-control" type="text" name="bible_search" value="{{search}}" placeholder="Buscar na Bíblia" aria-label="Search">
+        </form>
+    </div>
+
+    {% if count > 0 %}
+        <p style="font-size: 1.25em;">Encontrados {{ count }} resultados para: <span style="font-weight: 500;">{{search}}</span></p>
+    {% else %}
+        {% if search_term %}
+            <p style="font-size: 1.25em;">Nenhum resultado encontrado para: <span style="font-weight: 500;">{{search}}</span></p>
+        {% else %}
+            <p style="font-size: 1.25em;">Favor digite um termo válido para a busca</p>
+        {% endif %}
+    {% endif %}
+
+    {% for i in results %}
+    <p>{{i.text}} (<a href="/biblia/{{i.book_id.abbreviation}}/{{i.chapter}}#{{i.verse}}" class="text-decoration-none">{{i.book_id.abbreviation}} {{i.chapter}},{{i.verse}}</a>) | [{{i.score}}Pts]</p>
+    {% endfor %}
+    
+</div>
+{% endblock %}
+
+
+

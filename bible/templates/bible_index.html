@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}Bíblia{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <h2>Bíblia</h2>
+
+    <div class="row col-5 mx-auto mt-3 mb-5">
+        <form action="{% url 'bible_search' %}" method="POST" class="form-inline my-2 my-lg-0">{% csrf_token %}
+            <input class="form-control" type="text" name="bible_search" placeholder="Buscar na Bíblia" aria-label="Search">
+        </form>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-12 text-center mb-4">
+            <h3>Antigo Testamento</h3>
+        </div>
+        <div class="col-md-2">
+            <h5>Pentateuco</h5>
+            <a href="/biblia/gn/1" class="text-decoration-none">Genesis - Gn</a><br>
+            <a href="/biblia/Ex/1" class="text-decoration-none">Êxodo - Ex</a><br>
+            <a href="/biblia/Lv/1" class="text-decoration-none">Levítico - Lv</a><br>
+            <a href="/biblia/Nm/1" class="text-decoration-none">Números - Nm</a><br>
+            <a href="/biblia/Dt/1" class="text-decoration-none">Deuteronômio - Dt</a><br>
+        </div>
+        <div class="col-md-2">
+            <h5>Históricos</h5>
+			<a href="/biblia/Js/1" class="text-decoration-none">Josué - Js</a><br>
+			<a href="/biblia/Jz/1" class="text-decoration-none">Juízes - Jz</a><br>
+			<a href="/biblia/Rt/1" class="text-decoration-none">Rute - Rt</a><br>
+			<a href="/biblia/1Sm/1" class="text-decoration-none">1 Samuel - 1Sm</a><br>
+			<a href="/biblia/1Sm/1" class="text-decoration-none">2 Samuel - 1Sm</a><br>
+			<a href="/biblia/1Rs/1" class="text-decoration-none">1 Reis - 1Rs</a><br>
+			<a href="/biblia/2Rs/1" class="text-decoration-none">2 Reis - 2Rs</a><br>
+			<a href="/biblia/1Cr/1" class="text-decoration-none">1 Crônicas - 1Cr</a><br>
+			<a href="/biblia/2Cr/1" class="text-decoration-none">2 Crônicas - 2Cr</a><br>
+			<a href="/biblia/Esd/1" class="text-decoration-none">Esdras - Esd</a><br>
+			<a href="/biblia/Ne/1" class="text-decoration-none">Neemias - Ne</a><br>
+			<a href="/biblia/Tb/1" class="text-decoration-none">Tobias - Tb</a><br>
+			<a href="/biblia/Jt/1" class="text-decoration-none">Judite - Jt</a><br>
+			<a href="/biblia/Est/1" class="text-decoration-none">Ester - Est</a><br>
+			<a href="/biblia/1Mc/1" class="text-decoration-none">1 Macabeus - 1Mc</a><br>
+			<a href="/biblia/2Mc/1" class="text-decoration-none">2 Macabeus - 2Mc</a><br>
+        </div>
+        <div class="col-md-2">
+            <h5>Poéticos e <br>Sapienciais</h5>
+			<a href="/biblia/Jó/1" class="text-decoration-none">Jó - Jó</a><br>
+			<a href="/biblia/Sl/1" class="text-decoration-none">Salmo - Sl</a><br>
+			<a href="/biblia/Pv/1" class="text-decoration-none">Provérbios - Pv</a><br>
+			<a href="/biblia/Ecl/1" class="text-decoration-none">Eclesiastes - Ecl</a><br>
+			<a href="/biblia/Ct/1" class="text-decoration-none">Cânticos - Ct</a><br>
+			<a href="/biblia/Sb/1" class="text-decoration-none">Sabedoria - Sb</a><br>
+			<a href="/biblia/Eclo/1" class="text-decoration-none">Eclesiástico - Eclo</a><br>
+        </div>
+        <div class="col-md-4">
+            <h5 class="text-center">Profetas</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Maiores</h5>
+                    <a href="/biblia/Is/1" class="text-decoration-none">Isaías - Is</a><br>
+                    <a href="/biblia/Jr/1" class="text-decoration-none">Jeremias - Jr</a><br>
+                    <a href="/biblia/Lm/1" class="text-decoration-none">Lamentações - Lm</a><br>
+                    <a href="/biblia/Br/1" class="text-decoration-none">Baruc - Br</a><br>
+                    <a href="/biblia/Ez/1" class="text-decoration-none">Ezequiel - Ez</a><br>
+                    <a href="/biblia/Dn/1" class="text-decoration-none">Daniel - Dn</a><br>
+                </div>
+                <div class="col-md-6">
+                    <h5>Menores</h5>
+                    <a href="/biblia/Os/1" class="text-decoration-none">Oséias - Os</a><br>
+                    <a href="/biblia/Jl/1" class="text-decoration-none">Joel - Jl</a><br>
+                    <a href="/biblia/Am/1" class="text-decoration-none">Amós - Am</a><br>
+                    <a href="/biblia/Ab/1" class="text-decoration-none">Abdias - Ab</a><br>
+                    <a href="/biblia/Jn/1" class="text-decoration-none">Jonas - Jn</a><br>
+                    <a href="/biblia/Mq/1" class="text-decoration-none">Miquéias - Mq</a><br>
+                    <a href="/biblia/Na/1" class="text-decoration-none">Naum - Na</a><br>
+                    <a href="/biblia/Hab/1" class="text-decoration-none">Habacuc - Hab</a><br>
+                    <a href="/biblia/Sf/1" class="text-decoration-none">Sofonias - Sf</a><br>
+                    <a href="/biblia/Ag/1" class="text-decoration-none">Ageu - Ag</a><br>
+                    <a href="/biblia/Zc/1" class="text-decoration-none">Zacarias - Zc</a><br>
+                    <a href="/biblia/Ml/1" class="text-decoration-none">Malaquias - Ml</a><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-between my-5">
+        <div class="col-12 text-center mb-4">
+            <h3>Novo Testamento</h3>
+        </div>
+        <div class="col-md-2">
+            <h5>Evangelho</h5>
+			<a href="/biblia/Mt/1" class="text-decoration-none">Mateus - Mt</a><br>
+			<a href="/biblia/Mc/1" class="text-decoration-none">Marcos - Mc</a><br>
+			<a href="/biblia/Lc/1" class="text-decoration-none">Lucas - Lc</a><br>
+			<a href="/biblia/Jo/1" class="text-decoration-none">João - Jo</a><br>
+        </div>
+        <div class="col-md-2">
+            <h5>Atos</h5>
+			<a href="/biblia/At/1" class="text-decoration-none">Atos dos Apóstolos- At</a><br>
+        </div>
+        <div class="col-md-4">
+            <h5 class="text-center">Epístolas</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Paulinas</h5>
+					<a href="/biblia/Rm/1" class="text-decoration-none">Romanos - Rm</a><br>
+					<a href="/biblia/1Cor/1" class="text-decoration-none">1 Coríntios - 1Cor</a><br>
+					<a href="/biblia/2Cor/1" class="text-decoration-none">2 Coríntios - 2Cor</a><br>
+					<a href="/biblia/Gl/1" class="text-decoration-none">Gálatas - Gl</a><br>
+					<a href="/biblia/Ef/1" class="text-decoration-none">Efésios - Ef</a><br>
+					<a href="/biblia/Fl/1" class="text-decoration-none">Filipenses - Fl</a><br>
+					<a href="/biblia/Cl/1" class="text-decoration-none">Colossenses - Cl</a><br>
+					<a href="/biblia/1Ts/1" class="text-decoration-none">1 Tessalonicenses - 1Ts</a><br>
+					<a href="/biblia/2Ts/1" class="text-decoration-none">2 Tessalonicenses - 2Ts</a><br>
+					<a href="/biblia/1Tm/1" class="text-decoration-none">1 Timóteo - 1Tm</a><br>
+					<a href="/biblia/2Tm/1" class="text-decoration-none">2 Timóteo - 2Tm</a><br>
+					<a href="/biblia/Tt/1" class="text-decoration-none">Tito - Tt</a><br>
+					<a href="/biblia/Fm/1" class="text-decoration-none">Filêmon - Fm</a><br>
+                </div>
+                <div class="col-md-6">
+                    <h5>Católicas</h5>
+					<a href="/biblia/Hb/1" class="text-decoration-none">Hebreus - Hb</a><br>
+					<a href="/biblia/Tg/1" class="text-decoration-none">Tiago - Tg</a><br>
+					<a href="/biblia/1Pd/1" class="text-decoration-none">1 Pedro - 1Pd</a><br>
+					<a href="/biblia/2Pd/1" class="text-decoration-none">2 Pedro - 2Pd</a><br>
+					<a href="/biblia/1Jo/1" class="text-decoration-none">1 João - 1Jo</a><br>
+					<a href="/biblia/2Jo/1" class="text-decoration-none">2 João - 2Jo</a><br>
+					<a href="/biblia/3Jo/1" class="text-decoration-none">3 João - 3Jo</a><br>
+					<a href="/biblia/Jd/1" class="text-decoration-none">Judas - Jd</a><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <h5>Revelação</h5>
+			<a href="/biblia/Ap/1" class="text-decoration-none">Apocalipse - Ap</a><br>
+        </div>
+    </div>
+	
+</div>
+
+{% endblock %}
+

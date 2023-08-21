@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Leitura do Catecismo{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <h2>Catecismo</h2>
+    <div class="row col-5 mx-auto">
+        <form action="{% url 'catechism_search' %}" method="POST" class="form-inline my-2 my-lg-0">{% csrf_token %}
+            <input class="form-control" type="text" name="catechism_search" placeholder="Search" aria-label="Search">
+        </form>
+    </div>
+    <div class="row" style="text-align: justify;">
+    {% for item in paragraphs %}
+        <h5>{{ item.title }}</h5> <!-- | title -->
+        <p><strong>{{ item.number }}.</strong> {{ item.text }}</p>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

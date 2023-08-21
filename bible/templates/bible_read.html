@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Página Inicial - Católico Fiel{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row col-5 mx-auto mt-3 mb-3">
+        <form action="{% url 'bible_search' %}" method="POST" class="form-inline my-2 my-lg-0">{% csrf_token %}
+            <input class="form-control" type="text" name="bible_search" placeholder="Buscar na Bíblia" aria-label="Search">
+        </form>
+    </div>
+
+    <h2>{{versos.0.book_id.book}} {{versos.0.chapter}}</h2>
+
+        {% for verso in versos %}
+        <p><a id="{{verso.verse}}">{{verso.verse}}</a>. {{verso.text}}</p>
+        {% endfor %}
+
+    <a href="/biblia/{{previous_link.link}}/{{previous_link.chapter}}">« {{previous_link.book}} {{previous_link.chapter}}</a>
+    <a href="/biblia/{{next_link.link}}/{{next_link.chapter}}">{{next_link.book}} {{next_link.chapter}} »</a>
+</div>    
+{% endblock %}
+

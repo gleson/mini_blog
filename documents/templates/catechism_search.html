@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Busca no Catecismo{% endblock %}
+
+
+{% block 'search_term' %} {{search}} {% endblock %}
+
+{% block content %}
+<h2>Catecismo</h2>
+<div class="row col-5 mx-auto">
+    <form action="{% url 'catechism_search' %}" method="POST" class="form-inline my-2 my-lg-0">{% csrf_token %}
+        <input class="form-control" type="text" name="catechism_search" value="{{search}}" placeholder="Search" aria-label="Search">
+    </form>
+</div>
+
+    <p style="font-size: 1.15em;">
+    {% if count > 0 %}
+        Encontrados {{ count }} resultados para: <span style="font-weight: 500;">{{search}}</span>
+    {% else %}
+        Nenhum resultado encontrado para: <span style="font-weight: 500;">{{search}}</span>
+    {% endif %}
+    </p>
+
+    {% for i in results %}
+    <p><strong>{{i.number}}.</strong> {{i.text}} | [{{i.score}}Pts]</p>
+    {% endfor %}
+
+{% endblock %}
+
+
+
