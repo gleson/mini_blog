@@ -6,10 +6,12 @@
 {% block 'search_term' %} {{search}} {% endblock %}
 
 {% block content %}
+<div class="container">
+
 <h2>Catecismo</h2>
-<div class="row col-5 mx-auto">
-    <form action="{% url 'catechism_search' %}" method="POST" class="form-inline my-2 my-lg-0">{% csrf_token %}
-        <input class="form-control" type="text" name="catechism_search" value="{{search}}" placeholder="Search" aria-label="Search">
+<div class="row col-sd-10 col-md-7 col-lg-5 mx-auto mb-3">
+    <form action="{% url 'catechism_search' %}" method="POST" class="form-inline">{% csrf_token %}
+        <input class="form-control" type="text" name="catechism_search" value="{{search}}" placeholder="Buscar no Catecismo" aria-label="Search">
     </form>
 </div>
 
@@ -22,10 +24,8 @@
     </p>
 
     {% for i in results %}
-    <p><strong>{{i.number}}.</strong> {{i.text}} | [{{i.score}}Pts]</p>
+    <p><strong><a class="text-decoration-none" href="/docs/catecismo/{{ i.number|add:-5 }}-{{ i.number|add:5 }}#{{ i.number }}">{{i.number}}</a>.</strong> {{i.text | safe}} | [{{i.score}}Pts]</p>
     {% endfor %}
-
+</div>
 {% endblock %}
-
-
 

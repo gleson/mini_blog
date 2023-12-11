@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Catechism
 from search import functions as f
-# from django.db.models import Q
 
 def catechism_index(request):
     return render(request, 'catechism_index.html')
@@ -9,6 +8,7 @@ def catechism_index(request):
 
 def catechism_read(request, slug):
     numbers = []
+    start, end = 1, 10
     for value in slug.split(','):
         if '-' in value:
             start, end = value.split('-')
@@ -17,8 +17,12 @@ def catechism_read(request, slug):
             numbers.append(int(value))
 
     paragraphs = Catechism.objects.filter(number__in=numbers)
+    if int(start) > 10:
+        previous_lnk = f'{int(start)-10}-{int(start)-1}'
+    else:
+        previous_lnk = '1-10'
 
-    return render(request, 'catechism_read.html', {'paragraphs': paragraphs} )
+    return render(request, 'catechism_read.html', {'paragraphs': paragraphs, 'next_lnk': f'{int(end)+1}-{int(end)+10}', 'previous_lnk': previous_lnk} )
 
 
 def catechism_search(request):

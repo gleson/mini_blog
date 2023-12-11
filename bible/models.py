@@ -9,7 +9,7 @@ class Books(models.Model):
     group = models.CharField(max_length=20)
     slug = models.SlugField(unique=True)
     chapters = models.IntegerField()
-    
+
     def __str__(self):
         return self.book
 

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Página Inicial {% endblock %}
+
+
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- Hero -->
+
+    <div class="p-5 text-center bg-image" style="
+    background-image: url('static/img/igreja_hero.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:right;
+    height: 500px; width: 100%;">
+      <div class="row">
+        
+        <div class="col-md-4 mask rounded-3" style="background-color: rgba(0, 0, 0, 0.08);">
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+              <h2 class="mb-3">Católico Fiel</h1>
+              <h4 class="mb-3">O seu site de estudo da fé católica!</h4>
+              <p>O Católico Fiel é um site para estudo da Sã Doutrina. Aqui será possível conhecer o básico da fé e se aprofundar com conteúdos, cursos e quizzes!</p>
+              <a class="btn btn-outline-primary btn-sm" href="#!" role="button">Clique para iniciar</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+<!-- Hero -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}

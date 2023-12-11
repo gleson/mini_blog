@@ -1,24 +1,29 @@
 {% extends 'base.html' %}
 
-{% block title %}Página Inicial - Católico Fiel{% endblock %}
+{% block title %}{{book_verses.0.book_id.book}} {{book_verses.0.chapter}} - Católico Fiel{% endblock %}
 
 
 {% block content %}
 <div class="container">
-    <div class="row col-5 mx-auto mt-3 mb-3">
+    <div class="row col-sd-10 col-md-7 col-lg-5 mx-auto mb-3">
         <form action="{% url 'bible_search' %}" method="POST" class="form-inline my-2 my-lg-0">{% csrf_token %}
             <input class="form-control" type="text" name="bible_search" placeholder="Buscar na Bíblia" aria-label="Search">
         </form>
     </div>
-
-    <h2>{{versos.0.book_id.book}} {{versos.0.chapter}}</h2>
-
-        {% for verso in versos %}
-        <p><a id="{{verso.verse}}">{{verso.verse}}</a>. {{verso.text}}</p>
+    <div class="row">
+    <h2>{{book_verses.0.book_id.book}} {{book_verses.0.chapter}}</h2>
+        <div class="col-12">
+        {% for this_verse in book_verses %}
+            <p><a id="{{this_verse.verse}}">{{this_verse.verse}}</a>. {{this_verse.text}}</p>
         {% endfor %}
-
-    <a href="/biblia/{{previous_link.link}}/{{previous_link.chapter}}">« {{previous_link.book}} {{previous_link.chapter}}</a>
-    <a href="/biblia/{{next_link.link}}/{{next_link.chapter}}">{{next_link.book}} {{next_link.chapter}} »</a>
-</div>    
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center gap-2 d-block">
+            <a href="/biblia/{{ previous_chapter.book_id.abbreviation|lower }}/{{ previous_chapter.chapter }}" class="px-2 m-3 btn btn-primary btn-sm">« {{ previous_chapter.book_id.book }} {{ previous_chapter.chapter }}</a>
+            <a href="/biblia/{{ next_chapter.book_id.abbreviation|lower }}/{{ next_chapter.chapter }}" class="px-2 m-3 btn btn-primary btn-sm">{{ next_chapter.book_id.book }} {{ next_chapter.chapter }} »</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
 

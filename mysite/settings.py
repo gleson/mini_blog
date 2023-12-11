@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-yxixc009&n(f0wvwecp!@y@euke@y$64+!$5g1n&(u@zy25(wp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ['.vercel.app']
 ALLOWED_HOSTS = ['*']
@@ -32,9 +32,8 @@ INSTALLED_APPS = [
     # apps
     'bible',
     'search',
-    'posts',
+    'blog',
     'documents',
-    # 'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -75,12 +74,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.mysql', 
-        # 'NAME': 'bible',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'gleson$db',
         # 'USER': 'gleson',
-        # 'PASSWORD': '12345',
-        # 'HOST': 'localhost',
-        # 'PORT': '3306',
+        # 'PASSWORD': '123mudar!!@@',
+        # 'HOST': 'gleson.mysql.pythonanywhere-services.com',
     }
 }
 
@@ -121,7 +119,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
-STATIC_ROOT = os.path.join('static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 # Default primary key field type
@@ -131,9 +129,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MESSAGE_TAGS = {
-    constants.DEBUG: 'alert-primary', 
-    constants.ERROR: 'alert-danger', 
-    constants.SUCCESS: 'alert-success', 
-    constants.INFO: 'alert-info', 
+    constants.DEBUG: 'alert-primary',
+    constants.ERROR: 'alert-danger',
+    constants.SUCCESS: 'alert-success',
+    constants.INFO: 'alert-info',
     constants.WARNING: 'alert-warning'
 }

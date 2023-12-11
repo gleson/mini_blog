@@ -8,8 +8,30 @@
     <title>{% block title %}Católico Fiel{% endblock %}</title>
     {% block css %}
     <!-- <link href="{% static 'css/font-awesome-6.2.all.min.css' %}" rel="stylesheet"> -->
-    <link href="{% static 'css/bootstrap-5.1.min.css' %}" rel="stylesheet">
+    <!--<link href="{% static 'css/bootstrap-5.1.min.css' %}" rel="stylesheet">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <STYLE>
+          .navbar .megamenu{ padding: 1rem; }
+      
+      /* ============ desktop view ============ */
+      @media all and (min-width: 992px) {
+      
+        .navbar .has-megamenu{position:static!important;}
+        .navbar .megamenu{left:0; right:0; width:100%; margin-top:0;  }
+      
+      }	
+      /* ============ desktop view .end// ============ */
+      /* ============ mobile view ============ */
+      @media(max-width: 991px){
+        .navbar.fixed-top .navbar-collapse, .navbar.sticky-top .navbar-collapse{
+          overflow-y: auto;
+            max-height: 90vh;
+            margin-top:10px;
+        }
+      }
+      /* ============ mobile view .end// ============ */
+     </STYLE>
     {% endblock %}
     {% block extra_css %}{% endblock %}
     {% block js %}{% endblock %}

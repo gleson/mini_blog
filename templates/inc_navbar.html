@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
   <div class="container">
     <a class="navbar-brand" href="/">Católico Fiel</a>
@@ -9,25 +8,33 @@
     <div class="collapse navbar-collapse" id="navbarsExample07">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="/biblia/">Bíblia</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Documentos</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown07">
             <li><a class="dropdown-item" href="/docs/catecismo/">Catecismo</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Catecismo de Pio X</a></li>
+            <li><a class="dropdown-item" href="#">Catecismo de Trento</a></li>
+            <li><a class="dropdown-item" href="#">Didaque</a></li>
           </ul>
         </li>
+
+        <li class="nav-item dropdown has-megamenu">
+  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Sã Doutrina</a>
+  <div class="dropdown-menu megamenu" role="menu">
+    <div class="row g-3">
+<div class="col-lg-3 col-6"><div class="col-megamenu"><h6 class="title"><a href="/sacramentos">Sacramentos</a></h6><ul class="list-unstyled"><li>⭐ <a href="/sacramentos/batismo">Batismo</a></li><li>⭐ <a href="/sacramentos/primeira-eucaristia">Primeira Eucaristia</a></li></ul></div></div><div class="col-lg-3 col-6"><div class="col-megamenu"><h6 class="title"><a href="/vida-santa">Vida Santa</a></h6><ul class="list-unstyled"><li><a href="/santos">Santos</a></li><li><a href="/beatos">Beatos</a></li></ul></div></div><div class="col-lg-3 col-6"><div class="col-megamenu"><h6 class="title"><a href="/concilios">Concílios</a></h6><ul class="list-unstyled"></ul></div></div><div class="col-lg-3 col-6"><div class="col-megamenu"><h6 class="title"><a href="/mandamentos">Mandamentos</a></h6><ul class="list-unstyled"></ul></div></div><div class="col-lg-3 col-6"><div class="col-megamenu"><h6 class="title"><a href="/mandamentos-da-igreja">Mandamentos da Igreja</a></h6><ul class="list-unstyled"><li>⭐ <a href="/mandamentos-da-igreja/1-mandamento-da-igreja">1º - Participar da Missa aos domingos e festas de guarda e abster-se de trabalho</a></li><li>⭐ <a href="/mandamentos-da-igreja/2-mandamento-da-igreja">2º - Confessar-se ao menos uma vez por ano</a></li></ul></div></div>    </div>
+  </div>
+</li>
+        
+
         <li class="nav-item">
-          <a class="nav-link" href="/sacramentos/batismo/sacramento-do-batismo/">Batismo</a>
+          <a class="nav-link" href="/criando_menu">Atualiza Menu</a>
         </li>
       </ul>
       <form action="{% url 'results' %}" method="POST" class="form-inline my-2 my-lg-0">{% csrf_token %}
-        <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">
+       <input class="form-control" type="text" name="search" placeholder="Buscar no site" aria-label="Search">
       </form>
     </div>
   </div>

@@ -8,6 +8,11 @@ https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/
 """
 
 import os
+import sys
+
+path = '/home/gleson/mini_blog'
+if path not in sys.path:
+    sys.path.insert(0, path)
 
 from django.core.wsgi import get_wsgi_application
 

@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Books, Bible
 from search import functions as f
 
@@ -10,57 +9,46 @@ def bible_index(request):
 
 def bible_read(request, slug, chapter=1):
     slug = slug.title()
-    # livros = Books.objects.all()
-    livro = Books.objects.filter(abbreviation=slug).first()
-    versos = Bible.objects.filter(book_id=livro.id, chapter=chapter)
-    previous = versos.first()
-    next = versos.last()
-    previous_verse = Bible.objects.filter(id=(previous.id-1)).first()
-    next_verse = Bible.objects.filter(id=(next.id+1)).first()
-    last_chapter = livro.chapters
-    # next_page = None #próximo capítulo, ou, próximo livro se (cap = max e livro != max)
+    this_book = Books.objects.filter(abbreviation=slug).first()
 
-    #next
-    if int(chapter) < last_chapter:
-        next_book = livro.abbreviation
-        next_chapter = int(chapter)+1
-    else:
-        next_chapter = 1
-        if livro.abbreviation == 'Ap':
-            next_book = 'Índice'
-        else:
-            next_book = 1
-    
-    #previous
-    if int(chapter) > 1:
-        previous_book = livro.abbreviation
-        previous_chapter = int(chapter)-1  
-    elif int(chapter) == 1 and livro.abbreviation == 'Gn':
-        previous_book = 'Índice'
-    else:
-        previous_book = None # LIVRO ANTERIOR
+    book_verses = Bible.objects.filter(book_id=this_book.id, chapter=chapter)
+    # primeiro_verso = Bible.objects.filter(book_id=this_book.id, chapter=chapter, verse='1').first()
+    # primeiro_verso = book_verses.filter(verse='1')[0]
+    book_list = Bible.objects.filter(verse='1').order_by('id')
+    ### PEGAR INDICE ATUAL NA LISTA 'LIVROS'
+    # livro_atual = book_list.filter(verse=primeiro_verso).first()
+    index_list = [f'{this_book.book_id.abbreviation} {this_book.chapter}' for this_book in book_list]
+    current_index = index_list.index(f'{slug} {chapter}')
+
+    try:
+        previous_chapter = book_list[current_index-1]
+    except:
+        previous_chapter = book_list[1329]
+
+    try:
+        next_chapter = book_list[current_index+1]
+    except:
+        next_chapter = book_list[0]
 
 
-    
-    # next_page = {'book': next_book, 'chapter': next_chapter, 'link': next_book.lower()}
-    
-    
-    # previous_page = None #capítulo anterior, ou, livro anterior se (cap = min e livro != min)
-    # if chapter < livro.chapters.__gt__:
-        # next_page = Bible.objects.filter(book_id=livro.id, chapter=(chapter+1)).first()
+    # if current_index == 0:
+    #     previous_chapter = book_list[1329]
     # else:
-        # next_page = Bible.objects.filter(book_id=(livro.id+1), chapter=1).first()
+    #     previous_chapter = book_list[current_index-1]
 
-    
-        
-    # previous_book = Books.objects.filter(id=previous_verse.book_id).first()
-    # next_book = Books.objects.filter(id=next_verse.book_id).first()
-    # next_book = Books.objects.filter(id=next_verse).first()
-    # print(next_book)
-    # previous_link = {'book': previous_book.book, 'chapter': previous_verse.chapter, 'link': previous_book.slug}
-    # next_link = {'book': next_book.book, 'chapter': next_verse.chapter, 'link': next_book.slug}
-    # return render(request, 'livro.html', {'versos': versos, 'livro': livro, 'previous_link': previous_link, 'next_link': next_link} )
-    return render(request, 'bible_read.html', {'versos': versos, 'livro': livro} )
+    # if current_index == 1329:
+    #     next_chapter = book_list[0]
+    # else:
+    #     next_chapter = book_list[current_index+1]
+
+
+    # teste1 = primeiro_verso
+    # teste2 = previous_chapter
+    # teste3 = next_chapter
+
+    # return render(request, 'bible_read.html', {'teste1': teste1, 'teste2': teste2, 'teste3': teste3, 'current_index': current_index, 'indices': indices} )
+    # return render(request, 'bible_read.html', {'this_book': this_book, 'book_verses': book_verses, 'book_list': book_list} )
+    return render(request, 'bible_read.html', {'book_verses': book_verses, 'previous_chapter': previous_chapter, 'next_chapter': next_chapter} )
 
 
 def bible_search(request):

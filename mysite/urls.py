@@ -6,7 +6,7 @@ urlpatterns = [
     path('biblia/', include('bible.urls')),
     path('search/', include('search.urls')),
     path('docs/', include('documents.urls')),
-    path('', include('posts.urls')),
+    path('', include('blog.urls')),
 
     #  path('', include('plataforma.urls')),
 ]
