@@ -43,14 +43,12 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
-    # user = models.ForeignKey(settings.AUTH_USER_MODEL,default=1)
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=120)
     slug = models.SlugField(unique=True)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.DO_NOTHING)
     content = models.TextField()
     order = models.IntegerField(default=10)
-    # content = models.HTMLField('Content')
     summary = models.CharField(max_length=1000, null=True)
     publish = models.DateField(auto_now=False, auto_now_add=False, null=True)
     image = models.ManyToManyField(Image, blank=True)

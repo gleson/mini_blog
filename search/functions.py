@@ -38,7 +38,7 @@ def stemming(text):
     return text
 
 def include_synonyms(text):
-    synonyms_list = [('imputado', 'em conta', 'atribuído'), ('javé', 'iahweh'), ('abraão', 'abrão'), ('melquisedec', 'melquisedeque'), ('40', 'quarenta'), ('el shaddai', 'el shadai', 'el shadday', 'el shaday')]
+    synonyms_list = [('imputado', 'em conta', 'atribuído'), ('javé', 'iahweh'), ('beliar', 'belial'), ('abraão', 'abrão'), ('melquisedec', 'melquisedeque'), ('40', 'quarenta'), ('el shaddai', 'el shadai', 'el shadday', 'el shaday')]
     for synonyms in synonyms_list:
         for synonym in synonyms:
             new_text = re.sub(fr'\b{synonym}\b', f'#{",".join(synonyms)}#', text)

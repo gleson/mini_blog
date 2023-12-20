@@ -14,12 +14,19 @@ def my_view(request, url):
     postagem = Post.objects.filter(slug=ultimo_segmento)
     if postagem:
         postagem = postagem.first()
+        
+        # context = {'postagem': ''}
+        # Chega aqui, mas o if abaixo não está sendo satisfeito
         # Testa se o slug do post está na raiz ou se as categorias da url estão corretas
-        if len(segmentos)==1 or (postagem.category.get_cat_list()==segmentos[:-1]):
+        # if len(segmentos)==1 or (postagem.category.get_cat_list()[-1:]==segmentos[:-1]):
+        if len(segmentos)==1 or (postagem.category.get_cat_list()[-1:]==segmentos[:-1]):
             context = {
                 'postagem': postagem
             }
-        return render(request, 'post.html', context)
+            return render(request, 'post.html', context)
+        
+        return render(request, 'post.html', {'context': f'{len(segmentos)} {postagem.category.get_cat_list()[-1:]} {segmentos[:-1]}'})
+        
 
     else:
         categoria = Category.objects.filter(slug=ultimo_segmento)
