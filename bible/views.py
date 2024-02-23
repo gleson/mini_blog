@@ -67,3 +67,6 @@ def bible_search(request):
     else:
         return render(request, 'bible_search.html', {'results': [], 'search': '', 'count': 0})
 
+
+def bible_edit(request):
+    pass

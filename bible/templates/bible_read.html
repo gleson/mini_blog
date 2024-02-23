@@ -14,7 +14,10 @@
     <h2>{{book_verses.0.book_id.book}} {{book_verses.0.chapter}}</h2>
         <div class="col-12">
         {% for this_verse in book_verses %}
-            <p><a id="{{this_verse.verse}}">{{this_verse.verse}}</a>. {{this_verse.text}}</p>
+            <p>
+                <a id="{{this_verse.verse}}">{{this_verse.verse}}</a>. {{this_verse.text}} 
+                <button id="botao{{this_verse.verse}}" class="btn btn-outline-success" onclick="toggleForm('form{{this_verse.verse}}')"> (✏️)</button>
+            </p>
         {% endfor %}
         </div>
     </div>
@@ -25,5 +28,30 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function toggleForm(formId) {
+      const form = document.getElementById(formId);
+      if (form.style.display === 'none' || form.style.display === '') {
+          form.style.display = 'block';
+      } else {
+          form.style.display = 'none';
+      }
+    }
+  
+    function alterarClasse(checkbox) {
+      if (checkbox.checked) {
+        checkbox.classList.remove("bg-danger");
+        checkbox.classList.add("bg-success");
+        checkbox.value = "1";
+      } else {
+        checkbox.classList.remove("bg-success");
+        checkbox.classList.add("bg-danger");
+        checkbox.value = "0";
+      }
+    }
+  
+  </script>
 {% endblock %}
 
