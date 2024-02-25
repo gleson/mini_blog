@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Books, Bible
 from search import functions as f
 
@@ -12,11 +12,7 @@ def bible_read(request, slug, chapter=1):
     this_book = Books.objects.filter(abbreviation=slug).first()
 
     book_verses = Bible.objects.filter(book_id=this_book.id, chapter=chapter)
-    # primeiro_verso = Bible.objects.filter(book_id=this_book.id, chapter=chapter, verse='1').first()
-    # primeiro_verso = book_verses.filter(verse='1')[0]
     book_list = Bible.objects.filter(verse='1').order_by('id')
-    ### PEGAR INDICE ATUAL NA LISTA 'LIVROS'
-    # livro_atual = book_list.filter(verse=primeiro_verso).first()
     index_list = [f'{this_book.book_id.abbreviation} {this_book.chapter}' for this_book in book_list]
     current_index = index_list.index(f'{slug} {chapter}')
 
@@ -30,23 +26,6 @@ def bible_read(request, slug, chapter=1):
     except:
         next_chapter = book_list[0]
 
-
-    # if current_index == 0:
-    #     previous_chapter = book_list[1329]
-    # else:
-    #     previous_chapter = book_list[current_index-1]
-
-    # if current_index == 1329:
-    #     next_chapter = book_list[0]
-    # else:
-    #     next_chapter = book_list[current_index+1]
-
-
-    # teste1 = primeiro_verso
-    # teste2 = previous_chapter
-    # teste3 = next_chapter
-
-    # return render(request, 'bible_read.html', {'teste1': teste1, 'teste2': teste2, 'teste3': teste3, 'current_index': current_index, 'indices': indices} )
     # return render(request, 'bible_read.html', {'this_book': this_book, 'book_verses': book_verses, 'book_list': book_list} )
     return render(request, 'bible_read.html', {'book_verses': book_verses, 'previous_chapter': previous_chapter, 'next_chapter': next_chapter} )
 
@@ -68,5 +47,10 @@ def bible_search(request):
         return render(request, 'bible_search.html', {'results': [], 'search': '', 'count': 0})
 
 
-def bible_edit(request):
-    pass
+def bible_update(request):
+    verse_id = request.POST.get('verse_id')
+    verse = Bible.objects.filter(id=verse_id).first()
+
+    verse.text = request.POST.get('verse_text')
+    verse.save()
+    return redirect(f'/biblia/{verse.book_id.abbreviation}/{verse.chapter}')
