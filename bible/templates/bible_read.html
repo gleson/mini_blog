@@ -14,10 +14,22 @@
     <h2>{{book_verses.0.book_id.book}} {{book_verses.0.chapter}}</h2>
         <div class="col-12">
         {% for this_verse in book_verses %}
-            <p>
-                <a id="{{this_verse.verse}}">{{this_verse.verse}}</a>. {{this_verse.text}} 
-                <button id="botao{{this_verse.verse}}" class="btn btn-outline-success" onclick="toggleForm('form{{this_verse.verse}}')"> (✏️)</button>
-            </p>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <a id="{{this_verse.verse}}">{{this_verse.verse}}</a>. {{this_verse.text}} 
+                    {% if user.is_authenticated %}
+                    <button id="botao{{this_verse.id}}" class="btn" onclick="toggleForm('form{{this_verse.id}}')">✏️ ({{this_verse.id}})</button>
+                </div>
+                <div class="col-12">
+                    <form class="row" id="form{{this_verse.id}}" action="/biblia/update/" method="POST" enctype="multipart/form-data" style="display: none;" autocomplete="off">
+                    {% csrf_token %}
+                    <input type="hidden" class="form-control" name="verse_id" id="verse_id" value="{{this_verse.id}}">
+                    <input type="text" class="form-control col-8" name="verse_text" id="verse_text" value="{{this_verse.text}}">
+                    <button type="submit" name="verse_save" class="btn btn-success text-white col-2">💾 Salvar</button> 
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
         {% endfor %}
         </div>
     </div>
@@ -38,20 +50,7 @@
       } else {
           form.style.display = 'none';
       }
-    }
-  
-    function alterarClasse(checkbox) {
-      if (checkbox.checked) {
-        checkbox.classList.remove("bg-danger");
-        checkbox.classList.add("bg-success");
-        checkbox.value = "1";
-      } else {
-        checkbox.classList.remove("bg-success");
-        checkbox.classList.add("bg-danger");
-        checkbox.value = "0";
-      }
-    }
-  
-  </script>
+    }  
+</script>
 {% endblock %}
 
