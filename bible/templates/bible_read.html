@@ -18,7 +18,7 @@
                 <div class="col-12">
                     <a id="{{this_verse.verse}}">{{this_verse.verse}}</a>. {{this_verse.text}} 
                     {% if user.is_authenticated %}
-                    <button id="botao{{this_verse.id}}" class="btn" onclick="toggleForm('form{{this_verse.id}}')">✏️ ({{this_verse.id}})</button>
+                    <a href="#" id="link{{this_verse.id}}" class="text-decoration-none" onclick="toggleForm('form{{this_verse.id}}')">✏️</a>
                 </div>
                 <div class="col-12">
                     <form class="row" id="form{{this_verse.id}}" action="/biblia/update/" method="POST" enctype="multipart/form-data" style="display: none;" autocomplete="off">
