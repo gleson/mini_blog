@@ -19,7 +19,7 @@ eggs/
 
 # Virtualenv
 venv/
-
+.env
 # Jupyter Notebook
 *.ipynb
 .ipynb_checkpoints/
